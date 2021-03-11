@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
-public class FlutTestMain {
+public class FlutTestMainUpdate {
 
     public static void main(String[] args) {
 //        long startTime = System.nanoTime();
@@ -16,21 +17,23 @@ public class FlutTestMain {
         piles.add(pile2);
 //        piles.add(pile3);
         int schuur = piles.size();
-
-//        int sizeOfCombined = FlutAlgorithm.lengthOfMergedPiles(piles);
-//        System.out.println(sizeOfCombined);
         ArrayList<Integer> combinedarray = FlutAlgorithm.mergingPilesexceptfirstOne(piles);
-//       for (int i = 0; i < sizeOfCombined; i++) {
-//           System.out.print(combinedarray.get(i) + " ");
-//      }
         System.out.println();
         if (schuur > 0) {
-            ArrayList<Integer> profitArray = FlutAlgorithm.maxProfit(combinedarray);
-            int maximumProfit = Collections.max(profitArray);
+            int maxKey = 0;
+            HashMap<Integer, ArrayList<Integer>> profitsTableMap = FlutAlgorithmUpdate.maxProfit(combinedarray);
+            ArrayList<Integer> profitIndex = new ArrayList<Integer>();
+            for (int key : profitsTableMap.keySet()) {
+                if (key > maxKey)
+                    maxKey = key;
+            }
             System.out.println("\nschuurs " + schuur);
-            System.out.println("Maximum profit is: " + Collections.max(profitArray) + ".");
+            System.out.println("Maximum profit is: " + maxKey + ".");
             System.out.print("Number of fluts to buy: ");
-            FlutAlgorithm.numOfFluts(maximumProfit, profitArray);
+            profitIndex = profitsTableMap.get(maxKey);
+            for (int j = 0; j < profitIndex.size(); j++) {
+                System.out.print(profitIndex.get(j) + " ");
+            }
         }
 
 //        System.out.println();

@@ -3,13 +3,13 @@ import java.util.*;
 public class FlutAlgorithm {
     static int sellingprice = 10;
 
-//    public int lengthOfMergedPiles(ArrayList<int[]> piles) {
-//        int length = 0;
-//        for (int i = 0; i < piles.size(); i++) {
-//            length += piles.get(i).length - 1;
-//        }
-//        return length;
-//    }
+    static int lengthOfMergedPiles(ArrayList<int[]> piles) {
+        int length = 0;
+        for (int i = 0; i < piles.size(); i++) {
+            length += piles.get(i).length - 1;
+        }
+        return length;
+    }
 
     static ArrayList<Integer> mergingPilesexceptfirstOne(ArrayList<int[]> piles) {
         ArrayList<Integer> mergedPile = new ArrayList<Integer>();
